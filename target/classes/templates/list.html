@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.icon" />
+<title>Navbar Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div th:switch="${userList}">
+			<h2 th:case="null">No users yet!</h2>
+			<div th:case="*">
+				<h2>Users</h2>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Edit</th>
+							<th scope="col">Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="user : ${userList}">
+							<th scope="row" th:text="${user.id}"></th>
+							<td th:text="${user.name}"></td>
+							<td th:text="${user.email}"></td>
+							<td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+							<td><a th:href="@{/delete/{id}(id=${user.id})}">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p>
+				<a href="/user">Add a new user</a>
+			</p>
+		</div>
+		<button><a href=http://localhost:8080/greeting>greeting</button>
+            <button><a href=http://localhost:8080/list>list</button>
+            <button><a href=http://localhost:8080/result>result</button>
+            <button><a href=http://localhost:8080/user>user</button>
+            <button><a href=http://localhost:8080/>home</button>
+	</div>
+	<!-- /container -->
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>

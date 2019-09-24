@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.icon" />
+<title>Navbar Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+    <body>
+        <form action="#" th:action="@{/update}" th:object="${user}" method="post">
+            <table>
+                <tr>
+                    <td>Id:</td>
+                    <td><p type="text" th:text="${id}"></p></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" th:text="${name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" th:field="*{email}" th:text="${email}"/></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Enviar</button></td>
+                </tr>
+            </table>
+        </form>
+			<button><a href=http://localhost:8080/greeting>greeting</button>
+            <button><a href=http://localhost:8080/demo/list>list</button>
+            <button><a href=http://localhost:8080/result>result</button>
+            <button><a href=http://localhost:8080/demo/user>user</button>
+            <button><a href=http://localhost:8080/>home</button>
+    </body>
+</html>
